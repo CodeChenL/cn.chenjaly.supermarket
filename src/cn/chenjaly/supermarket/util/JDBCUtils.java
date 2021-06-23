@@ -1,4 +1,4 @@
-package util;
+package cn.chenjaly.supermarket.util;
 
 import com.alibaba.druid.pool.DruidDataSourceFactory;
 
