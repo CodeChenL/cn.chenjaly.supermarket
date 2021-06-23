@@ -102,5 +102,7 @@ public class User {
 
     private String code;
     private String address;
-    public User(){}
+
+    public User() {
+    }
 }

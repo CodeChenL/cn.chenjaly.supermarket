@@ -19,21 +19,20 @@ public class RegisterServlet extends HttpServlet {
     protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 
-
         request.setCharacterEncoding("utf-8");
-        Map<String,String[]> map=request.getParameterMap();
-        User user =new User();
+        Map<String, String[]> map = request.getParameterMap();
+        User user = new User();
         user.setUid(UUID.randomUUID().toString());
         user.setState(0);
         try {
-            BeanUtils.populate(user,map);
+            BeanUtils.populate(user, map);
         } catch (IllegalAccessException e) {
             e.printStackTrace();
         } catch (InvocationTargetException e) {
             e.printStackTrace();
         }
-        UserService service=new UserServiceimpl();
+        UserService service = new UserServiceimpl();
         service.addUser(user);
-        response.sendRedirect(request.getContextPath()+"/register.jsp");
+        response.sendRedirect(request.getContextPath() + "/register.jsp");
     }
 }

@@ -7,7 +7,8 @@ import cn.chenjaly.supermarket.service.UserService;
 
 public class UserServiceimpl implements UserService {
 
-    UserDao dao=new UserDaoimpl();
+    UserDao dao = new UserDaoimpl();
+
     @Override
     public User getUserByUsername(String username) {
         return dao.getUserByUsername(username);

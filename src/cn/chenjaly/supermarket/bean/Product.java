@@ -70,6 +70,22 @@ public class Product {
     private String pdesc;
     private int pflag;
     private String pid;
-    public Product(){};
-    public String getPid(){return pid;}
+    private String pname;
+
+    public String getPname() {
+        return pname;
+    }
+
+    public void setPname(String pname) {
+        this.pname = pname;
+    }
+
+    public Product() {
+    }
+
+    ;
+
+    public String getPid() {
+        return pid;
+    }
 }

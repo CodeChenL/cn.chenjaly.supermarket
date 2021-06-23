@@ -2,7 +2,7 @@ package cn.chenjaly.supermarket.bean;
 
 public class OrderItem {
     private String itemid;
-    private  Product product;
+    private Product product;
     private int count;
 
     public String getItemid() {
@@ -47,7 +47,8 @@ public class OrderItem {
 
     private double subtotal;
     private String oid;
-    public OrderItem(){
+
+    public OrderItem() {
 
     }
 }

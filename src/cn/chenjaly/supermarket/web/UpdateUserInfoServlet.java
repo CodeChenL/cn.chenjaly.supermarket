@@ -26,9 +26,9 @@ public class UpdateUserInfoServlet extends HttpServlet {
 //        String telephone=request.getParameter("telephone");
 //        String birthday=request.getParameter("birthday");
 
-        Map<String,String[]> map=request.getParameterMap();
-        HttpSession session=request.getSession();
-        User user =(User) session.getAttribute("user");
+        Map<String, String[]> map = request.getParameterMap();
+        HttpSession session = request.getSession();
+        User user = (User) session.getAttribute("user");
 //        user.setAddress(address);
 //        user.setBirthday(birthday);
 //        user.setSex(sex);
@@ -37,15 +37,15 @@ public class UpdateUserInfoServlet extends HttpServlet {
 //        user.setTelephone(telephone);
 //        user.setPassword(password);
         try {
-            BeanUtils.populate(user,map);
+            BeanUtils.populate(user, map);
         } catch (IllegalAccessException e) {
             e.printStackTrace();
         } catch (InvocationTargetException e) {
             e.printStackTrace();
         }
-        UserService service=new UserServiceimpl();
+        UserService service = new UserServiceimpl();
         service.updateUser(user);
-        session.setAttribute("user",user);
-        response.sendRedirect(request.getContextPath()+"/user_info.jsp");
+        session.setAttribute("user", user);
+        response.sendRedirect(request.getContextPath() + "/user_info.jsp");
     }
 }
