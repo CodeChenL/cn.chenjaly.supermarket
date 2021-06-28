@@ -4,6 +4,11 @@ public class OrderItem {
     private String itemid;
     private Product product;
     private int count;
+    private int Oid;
+
+    public void setOid(int oid) {
+        Oid = oid;
+    }
 
     public String getItemid() {
         return itemid;

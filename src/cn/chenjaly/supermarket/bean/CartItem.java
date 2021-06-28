@@ -25,7 +25,7 @@ public class CartItem {
     }
 
     public double getSubTotal() {
-        return subTotal;
+        return product.getShop_price()*buyNum;
     }
 
     public void setSubTotal(double subTotal) {
@@ -34,7 +34,7 @@ public class CartItem {
 
     @Override
     public String toString() {
-        return "Cartltem{" +
+        return "CartItem{" +
                 "product=" + product +
                 ", buyNum=" + buyNum +
                 ", subTotal=" + subTotal +
