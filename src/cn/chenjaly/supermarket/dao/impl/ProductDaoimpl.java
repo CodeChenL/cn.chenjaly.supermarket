@@ -17,4 +17,11 @@ public class ProductDaoimpl implements ProductDao {
         List<Product> list = template.query(sql, new BeanPropertyRowMapper<>(Product.class));
         return list;
     }
+
+    @Override
+    public Product getProductByPid(String pid) {
+        String sql = "select * from product where pid=?";
+
+        return template.queryForObject(sql,new BeanPropertyRowMapper<>(Product.class),pid);
+    }
 }

@@ -14,4 +14,9 @@ public class ProductServiceimpl implements ProductService {
     public List<Product> getProductList() {
         return dao.getProductList();
     }
+
+    @Override
+    public Product getProductByPid(String pid) {
+        return dao.getProductByPid(pid);
+    }
 }

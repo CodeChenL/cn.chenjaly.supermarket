@@ -8,6 +8,7 @@ import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.annotation.*;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 @WebServlet(name = "ProductListServlet", value = "/ProductListServlet")
@@ -16,9 +17,20 @@ public class ProductListServlet extends HttpServlet {
     protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         request.setCharacterEncoding("utf-8");
+        String s = request.getParameter("currentPage");
+        int currentPage = Integer.parseInt(s);
+
         ProductService service = new ProductServiceimpl();
         List<Product> productList = service.getProductList();
-        request.setAttribute("productList", productList);
+        ArrayList<Product> list = new ArrayList<>();
+        int n = 12;
+        for (int i = (currentPage - 1) * n; i < currentPage * n && i < productList.size(); i++) {
+            list.add(productList.get(i));
+        }
+        int totalPage = (productList.size() - 1) / n + 1;
+        request.setAttribute("productList", list);
+        request.setAttribute("currentPage", currentPage);
+        request.setAttribute("totalPage", totalPage);
         request.getRequestDispatcher("/product_list.jsp").forward(request, response);
     }
 }
