@@ -35,4 +35,16 @@ public class OrderServiceimpl implements OrderService {
         orderItemDao.deleteOrderItemByOid(oid);
         return dao.deleteOrdersByOid(oid);
     }
+
+    @Override
+    public Order getOrderByOid(String oid) {
+        Order order = dao.getOrderByOid(oid);
+        order.setOrderItems(orderItemDao.getOrderItemByOid(oid));
+        return order;
+    }
+
+    @Override
+    public int updateOrders(Order order) {
+        return dao.updateOrders(order);
+    }
 }

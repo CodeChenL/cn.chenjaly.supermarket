@@ -31,4 +31,16 @@ public class OrdersDaoimpl implements OrdersDao {
         String sql="delete from orders where oid=? ";
         return jdbcTemplate.update(sql,oid);
     }
+
+    @Override
+    public Order getOrderByOid(String oid) {
+        String sql="select * from orders where oid=?";
+        return jdbcTemplate.queryForObject(sql,new BeanPropertyRowMapper<>(Order.class),oid);
+    }
+
+    @Override
+    public int updateOrders(Order order) {
+        String sql="update orders set address=?,name=?,telephone=? where oid=?";
+        return jdbcTemplate.update(sql,order.getAddress(),order.getName(),order.getTelephone(),order.getOid());
+    }
 }
