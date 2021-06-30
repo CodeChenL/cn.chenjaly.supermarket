@@ -31,4 +31,8 @@ public class OrderServiceimpl implements OrderService {
         }
         return orderList;
     }
+    public int deleteOrdersByOid(String oid){
+        orderItemDao.deleteOrderItemByOid(oid);
+        return dao.deleteOrdersByOid(oid);
+    }
 }

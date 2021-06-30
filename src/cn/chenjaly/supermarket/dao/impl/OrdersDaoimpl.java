@@ -25,4 +25,10 @@ public class OrdersDaoimpl implements OrdersDao {
         String sql="select * from orders where uid=? order by ordertime desc";
         return jdbcTemplate.query(sql,new BeanPropertyRowMapper<>(Order.class),uid);
     }
+
+    @Override
+    public int deleteOrdersByOid(String oid) {
+        String sql="delete from orders where oid=? ";
+        return jdbcTemplate.update(sql,oid);
+    }
 }

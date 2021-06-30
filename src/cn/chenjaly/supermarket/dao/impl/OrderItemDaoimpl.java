@@ -34,4 +34,10 @@ public class OrderItemDaoimpl implements OrderItemDao {
         }
         return orderItemList;
     }
+
+    @Override
+    public int deleteOrderItemByOid(String oid) {
+        String sql="delete from orderitem where oid=? ";
+        return jdbcTemplate.update(sql,oid);
+    }
 }
