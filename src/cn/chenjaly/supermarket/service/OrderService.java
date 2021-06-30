@@ -2,7 +2,10 @@ package cn.chenjaly.supermarket.service;
 
 import cn.chenjaly.supermarket.bean.Order;
 
+import java.util.List;
+
 public interface OrderService {
     public int addOrders(Order order);
+    public List<Order> getOrdersByUid( String uid);
 }
 

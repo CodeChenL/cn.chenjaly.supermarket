@@ -35,7 +35,7 @@ public class OrderItem {
     }
 
     public double getSubtotal() {
-        return subtotal;
+        return product.getShop_price()*count;
     }
 
     public void setSubtotal(double subtotal) {

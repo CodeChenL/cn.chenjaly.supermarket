@@ -8,4 +8,7 @@ public interface ProductService {
     public List<Product> getProductList();
 
     Product getProductByPid(String pid);
+
+    public List<Product> HotProductList();
+    public List<Product> NewestProductList();
 }

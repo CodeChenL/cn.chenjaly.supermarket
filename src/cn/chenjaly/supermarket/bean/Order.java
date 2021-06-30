@@ -3,10 +3,12 @@ package cn.chenjaly.supermarket.bean;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
+import java.util.Set;
 
 public class Order {
     private String oid;
-    private String otime;
+    private String orderTime;
     private String name;
     private String address;
     private String telephone;
@@ -20,12 +22,12 @@ public class Order {
         this.oid = oid;
     }
 
-    public String getOtime() {
-        return otime;
+    public String getorderTime() {
+        return orderTime;
     }
 
-    public void setOtime(String otime) {
-        this.otime = otime;
+    public void setorderTime(String otime) {
+        this.orderTime = otime;
     }
 
     public String getName() {
@@ -53,6 +55,12 @@ public class Order {
     }
 
     public double getTotal() {
+        total = 0;
+        for (OrderItem item:orderItems) {
+            //通过遍历循环获得小计价格
+            total += item.getSubtotal();
+
+        }
         return total;
     }
 

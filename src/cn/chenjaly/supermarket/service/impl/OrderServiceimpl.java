@@ -8,6 +8,8 @@ import cn.chenjaly.supermarket.dao.impl.OrderItemDaoimpl;
 import cn.chenjaly.supermarket.dao.impl.OrdersDaoimpl;
 import cn.chenjaly.supermarket.service.OrderService;
 
+import java.util.List;
+
 public class OrderServiceimpl implements OrderService {
     OrdersDao dao=new OrdersDaoimpl();
     OrderItemDao orderItemDao=new OrderItemDaoimpl();
@@ -18,5 +20,15 @@ public class OrderServiceimpl implements OrderService {
             orderItemDao.addOrderItem(orderItem);
         }
         return i;
+    }
+
+    @Override
+    public List<Order> getOrdersByUid(String uid) {
+        List<Order> orderList=dao.getOrdersListByUid(uid);
+        for (Order order:orderList){
+            List<OrderItem> orderItemList=orderItemDao.getOrderItemByOid(order.getOid());
+            order.setOrderItems(orderItemList);
+        }
+        return orderList;
     }
 }

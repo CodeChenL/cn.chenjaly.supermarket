@@ -19,4 +19,14 @@ public class ProductServiceimpl implements ProductService {
     public Product getProductByPid(String pid) {
         return dao.getProductByPid(pid);
     }
+
+    @Override
+    public List<Product> HotProductList() {
+        return dao.HotProductList();
+    }
+
+    @Override
+    public List<Product> NewestProductList() {
+        return dao.NewestProductList();
+    }
 }
