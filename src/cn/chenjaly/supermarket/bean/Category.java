@@ -4,6 +4,7 @@ public class Category {
     private String cid;
     private String cname;
 
+    public Category(){}
     public String getCid() {
         return cid;
     }
@@ -20,7 +21,11 @@ public class Category {
         this.cname = cname;
     }
 
-    public Category(String cid) {
-        this.cid = cid;
+    @Override
+    public String toString() {
+        return "Category{" +
+                "cid='" + cid + '\'' +
+                ", cname='" + cname + '\'' +
+                '}';
     }
 }
