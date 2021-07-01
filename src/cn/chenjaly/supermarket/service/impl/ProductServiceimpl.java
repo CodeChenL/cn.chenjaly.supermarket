@@ -34,4 +34,9 @@ public class ProductServiceimpl implements ProductService {
     public List<Product> getProductListByCid(String cid) {
         return dao.getProductListByCid(cid);
     }
+
+    @Override
+    public List<Product> searchProduct(String search) {
+        return dao.searchProduct(search);
+    }
 }

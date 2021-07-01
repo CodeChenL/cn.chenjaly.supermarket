@@ -44,4 +44,10 @@ public class ProductDaoimpl implements ProductDao {
         String sql = "select * from product where cid=?";
         return template.query(sql, new BeanPropertyRowMapper<>(Product.class), cid);
     }
+
+    @Override
+    public List<Product> searchProduct(String search) {
+        String sql="select * from product where pname like ? or pdesc like ?";
+        return template.query(sql,new BeanPropertyRowMapper<>(Product.class),search,search);
+    }
 }

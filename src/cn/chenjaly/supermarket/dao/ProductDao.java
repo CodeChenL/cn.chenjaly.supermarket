@@ -14,4 +14,5 @@ public interface ProductDao {
     public List<Product> NewestProductList();
 
     public List<Product> getProductListByCid(String cid);
+    public List<Product> searchProduct(String search);
 }
