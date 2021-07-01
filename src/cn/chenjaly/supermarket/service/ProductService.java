@@ -11,4 +11,5 @@ public interface ProductService {
 
     public List<Product> HotProductList();
     public List<Product> NewestProductList();
+    public List<Product> getProductListByCid(String cid);
 }

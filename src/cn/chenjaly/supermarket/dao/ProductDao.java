@@ -10,4 +10,5 @@ public interface ProductDao {
     public Product getProductByPid(String pid);
     public List<Product> HotProductList();
     public List<Product> NewestProductList();
+    public List<Product> getProductListByCid(String cid);
 }

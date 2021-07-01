@@ -20,8 +20,16 @@ public class ProductListServlet extends HttpServlet {
         String s = request.getParameter("currentPage");
         int currentPage = Integer.parseInt(s);
 
+        String cid = request.getParameter("cid");
         ProductService service = new ProductServiceimpl();
-        List<Product> productList = service.getProductList();
+        List<Product> productList = null;
+        if (cid==null){
+            productList= service.getProductList();
+        }else {
+
+            productList= service.getProductListByCid(cid);
+            request.setAttribute("cid",cid);
+        }
         ArrayList<Product> list = new ArrayList<>();
         int n = 12;
         for (int i = (currentPage - 1) * n; i < currentPage * n && i < productList.size(); i++) {

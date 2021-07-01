@@ -29,4 +29,9 @@ public class ProductServiceimpl implements ProductService {
     public List<Product> NewestProductList() {
         return dao.NewestProductList();
     }
+
+    @Override
+    public List<Product> getProductListByCid(String cid) {
+        return dao.getProductListByCid(cid);
+    }
 }
