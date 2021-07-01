@@ -8,7 +8,7 @@ import cn.chenjaly.supermarket.service.CategoryService;
 import java.util.List;
 
 public class CategoryServiceimpl implements CategoryService {
-     CategoryDao dao = new CategoryDaoimpl();
+    CategoryDao dao = new CategoryDaoimpl();
 
     @Override
     public List<Category> getCategoryList() {

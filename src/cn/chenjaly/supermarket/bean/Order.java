@@ -56,7 +56,7 @@ public class Order {
 
     public double getTotal() {
         total = 0;
-        for (OrderItem item:orderItems) {
+        for (OrderItem item : orderItems) {
             //通过遍历循环获得小计价格
             total += item.getSubtotal();
 

@@ -9,10 +9,11 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import java.util.List;
 
 public class CategoryDaoimpl implements CategoryDao {
-    JdbcTemplate template=new JdbcTemplate(JDBCUtils.getDataSource());
+    JdbcTemplate template = new JdbcTemplate(JDBCUtils.getDataSource());
+
     @Override
     public List<Category> getCategoryList() {
-        String sql="select * from Category";
-        return template.query(sql,new BeanPropertyRowMapper<>(Category.class));
+        String sql = "select * from Category";
+        return template.query(sql, new BeanPropertyRowMapper<>(Category.class));
     }
 }

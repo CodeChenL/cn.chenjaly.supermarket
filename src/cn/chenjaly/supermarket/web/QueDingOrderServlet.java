@@ -19,22 +19,22 @@ public class QueDingOrderServlet extends HttpServlet {
     @Override
     protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         req.setCharacterEncoding("utf-8");
-        String oid =req.getParameter("oid");
-        Map<String,String[]>map=req.getParameterMap();
-        Order order=new Order();
+        String oid = req.getParameter("oid");
+        Map<String, String[]> map = req.getParameterMap();
+        Order order = new Order();
         try {
-            BeanUtils.populate(order,map);
+            BeanUtils.populate(order, map);
         } catch (IllegalAccessException e) {
             e.printStackTrace();
         } catch (InvocationTargetException e) {
             e.printStackTrace();
         }
-        OrderService service=new OrderServiceimpl();
+        OrderService service = new OrderServiceimpl();
         service.updateOrders(order);
-        order=service.getOrderByOid(oid);
-        req.setAttribute("order",order);
+        order = service.getOrderByOid(oid);
+        req.setAttribute("order", order);
 
-        req.getRequestDispatcher("account.jsp").forward(req,resp);
+        req.getRequestDispatcher("account.jsp").forward(req, resp);
 
     }
 }

@@ -20,10 +20,10 @@ public class ProductInfoServlet extends HttpServlet {
         Product productByPid = service.getProductByPid(pid);
 
         //将查询出来的数据转发给前端
-        req.setAttribute("product",productByPid);
+        req.setAttribute("product", productByPid);
 
 
         //跳转
-        req.getRequestDispatcher("product_info.jsp").forward(req,resp);
+        req.getRequestDispatcher("product_info.jsp").forward(req, resp);
     }
 }

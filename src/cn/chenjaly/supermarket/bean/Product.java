@@ -7,6 +7,16 @@ public class Product {
     private String pdate;
     private int is_hot;
 
+    private String cid;
+
+    public String getCid() {
+        return cid;
+    }
+
+    public void setCid(String cid) {
+        this.cid = cid;
+    }
+
     public double getMarket_price() {
         return market_price;
     }

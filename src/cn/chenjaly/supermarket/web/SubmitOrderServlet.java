@@ -17,12 +17,12 @@ public class SubmitOrderServlet extends HttpServlet {
     protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         request.setCharacterEncoding("utf-8");
-        HttpSession session=request.getSession();
-        User user=(User) session.getAttribute("user");
-        if (user==null){
+        HttpSession session = request.getSession();
+        User user = (User) session.getAttribute("user");
+        if (user == null) {
             response.sendRedirect("login.jsp");
-        }else {
-            Cart cart=(Cart) session.getAttribute("cart");
+        } else {
+            Cart cart = (Cart) session.getAttribute("cart");
             Order order = new Order();
             order.setOid(UUID.randomUUID().toString());
             order.setAddress(user.getAddress());
@@ -30,11 +30,11 @@ public class SubmitOrderServlet extends HttpServlet {
             order.setState(0);
             order.setTelephone(user.getTelephone());
             order.setUid(user.getUid());
-            List<OrderItem> orderItems=new ArrayList<>();
+            List<OrderItem> orderItems = new ArrayList<>();
             order.setOrderItems(orderItems);
-            Set<Map.Entry<String, CartItem>> entries= cart.getCartItems().entrySet();
+            Set<Map.Entry<String, CartItem>> entries = cart.getCartItems().entrySet();
 
-            for (Map.Entry<String, CartItem> entry:entries){
+            for (Map.Entry<String, CartItem> entry : entries) {
                 OrderItem orderItem = new OrderItem();
                 orderItem.setItemid(UUID.randomUUID().toString());
                 orderItem.setCount(entry.getValue().getBuyNum());
@@ -45,8 +45,8 @@ public class SubmitOrderServlet extends HttpServlet {
             OrderService service = new OrderServiceimpl();
             service.addOrders(order);
             session.removeAttribute("cart");
-            session.setAttribute("order",order);
-            request.getRequestDispatcher("order_info.jsp").forward(request,response);
+            session.setAttribute("order", order);
+            request.getRequestDispatcher("order_info.jsp").forward(request, response);
 
         }
     }

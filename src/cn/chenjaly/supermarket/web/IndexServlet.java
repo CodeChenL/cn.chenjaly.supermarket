@@ -19,17 +19,17 @@ public class IndexServlet extends HttpServlet {
     protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         request.setCharacterEncoding("utf-8");
-        ProductService service=new ProductServiceimpl();
-        CategoryService categoryService=new CategoryServiceimpl();
+        ProductService service = new ProductServiceimpl();
+        CategoryService categoryService = new CategoryServiceimpl();
 
-        List<Category>categoryList=categoryService.getCategoryList();
-        HttpSession session=request.getSession();
-        session.setAttribute("categoryList",categoryList);
-        session.setMaxInactiveInterval(1000*60*30);
-        List<Product>list=service.HotProductList();
-        request.setAttribute("hotProductList",list);
-        List<Product>list1=service.NewestProductList();
-        request.setAttribute("newProductList",list1);
-        request.getRequestDispatcher("index.jsp").forward(request,response);
+        List<Category> categoryList = categoryService.getCategoryList();
+        HttpSession session = request.getSession();
+        session.setAttribute("categoryList", categoryList);
+        session.setMaxInactiveInterval(1000 * 60 * 30);
+        List<Product> list = service.HotProductList();
+        request.setAttribute("hotProductList", list);
+        List<Product> list1 = service.NewestProductList();
+        request.setAttribute("newProductList", list1);
+        request.getRequestDispatcher("index.jsp").forward(request, response);
     }
 }

@@ -32,15 +32,15 @@ public class AddCartServlet extends HttpServlet {
         //创建购物车
         HttpSession session = req.getSession();
         Cart cart = (Cart) session.getAttribute("cart");
-        if (cart == null){
+        if (cart == null) {
             //空的购物车
             cart = new Cart();
         }
-        Map<String,CartItem> cartItems = cart.getCartItems();
-        cartItems.put(pid,cartItem);
+        Map<String, CartItem> cartItems = cart.getCartItems();
+        cartItems.put(pid, cartItem);
         //把购物车保存在session中
-        session.setAttribute("cart",cart);
+        session.setAttribute("cart", cart);
         //重定向
-        resp.sendRedirect(req.getContextPath()+"/cart.jsp");
+        resp.sendRedirect(req.getContextPath() + "/cart.jsp");
     }
 }

@@ -21,15 +21,15 @@ public class OrderListServlet extends HttpServlet {
     @Override
     protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         req.setCharacterEncoding("utf-8");
-        String s=req.getParameter("currentPage");
-        int currentPage =Integer.parseInt(s);
-        HttpSession session=req.getSession();
+        String s = req.getParameter("currentPage");
+        int currentPage = Integer.parseInt(s);
+        HttpSession session = req.getSession();
         User user = (User) session.getAttribute("user");
-        OrderService service=new OrderServiceimpl();
-        if (user==null){
+        OrderService service = new OrderServiceimpl();
+        if (user == null) {
             resp.sendRedirect("login.jsp");
-        }else {
-            List<Order> list=service.getOrdersByUid(user.getUid());
+        } else {
+            List<Order> list = service.getOrdersByUid(user.getUid());
             ArrayList<Order> orderList = new ArrayList<>();
             int n = 5;
             for (int i = (currentPage - 1) * n; i < currentPage * n && i < list.size(); i++) {

@@ -23,12 +23,12 @@ public class ProductListServlet extends HttpServlet {
         String cid = request.getParameter("cid");
         ProductService service = new ProductServiceimpl();
         List<Product> productList = null;
-        if (cid==null){
-            productList= service.getProductList();
-        }else {
+        if (cid == null) {
+            productList = service.getProductList();
+        } else {
 
-            productList= service.getProductListByCid(cid);
-            request.setAttribute("cid",cid);
+            productList = service.getProductListByCid(cid);
+            request.setAttribute("cid", cid);
         }
         ArrayList<Product> list = new ArrayList<>();
         int n = 12;

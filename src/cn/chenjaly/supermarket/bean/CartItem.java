@@ -25,7 +25,7 @@ public class CartItem {
     }
 
     public double getSubTotal() {
-        return product.getShop_price()*buyNum;
+        return product.getShop_price() * buyNum;
     }
 
     public void setSubTotal(double subTotal) {

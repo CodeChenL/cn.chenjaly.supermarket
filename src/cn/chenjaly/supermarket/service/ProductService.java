@@ -10,6 +10,8 @@ public interface ProductService {
     Product getProductByPid(String pid);
 
     public List<Product> HotProductList();
+
     public List<Product> NewestProductList();
+
     public List<Product> getProductListByCid(String cid);
 }

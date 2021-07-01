@@ -11,11 +11,12 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import java.util.List;
 
 public class OrderItemDaoimpl implements OrderItemDao {
-    JdbcTemplate jdbcTemplate=new JdbcTemplate(JDBCUtils.getDataSource());
+    JdbcTemplate jdbcTemplate = new JdbcTemplate(JDBCUtils.getDataSource());
+
     @Override
     public int addOrderItem(OrderItem orderItem) {
-        String sql="insert into OrderItem values(?,?,?,?,?)";
-        return jdbcTemplate.update(sql,orderItem.getItemid(),
+        String sql = "insert into OrderItem values(?,?,?,?,?)";
+        return jdbcTemplate.update(sql, orderItem.getItemid(),
                 orderItem.getCount(),
                 orderItem.getSubtotal(),
                 orderItem.getProduct().getPid(),
@@ -24,11 +25,11 @@ public class OrderItemDaoimpl implements OrderItemDao {
 
     @Override
     public List<OrderItem> getOrderItemByOid(String oid) {
-        String sql="select * from OrderItem where oid=?";
+        String sql = "select * from OrderItem where oid=?";
         List<OrderItem> orderItemList = jdbcTemplate.query(sql, new BeanPropertyRowMapper<>(OrderItem.class), oid);
-        List<Product> productList = jdbcTemplate.query(sql,new BeanPropertyRowMapper<>(Product.class),oid);
+        List<Product> productList = jdbcTemplate.query(sql, new BeanPropertyRowMapper<>(Product.class), oid);
         ProductDao dao = new ProductDaoimpl();
-        for (int i=0;i<orderItemList.size();i++){
+        for (int i = 0; i < orderItemList.size(); i++) {
             Product product = dao.getProductByPid(productList.get(i).getPid());
             orderItemList.get(i).setProduct(product);
         }
@@ -37,7 +38,7 @@ public class OrderItemDaoimpl implements OrderItemDao {
 
     @Override
     public int deleteOrderItemByOid(String oid) {
-        String sql="delete from orderitem where oid=? ";
-        return jdbcTemplate.update(sql,oid);
+        String sql = "delete from orderitem where oid=? ";
+        return jdbcTemplate.update(sql, oid);
     }
 }

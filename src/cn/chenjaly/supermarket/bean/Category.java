@@ -4,7 +4,9 @@ public class Category {
     private String cid;
     private String cname;
 
-    public Category(){}
+    public Category() {
+    }
+
     public String getCid() {
         return cid;
     }

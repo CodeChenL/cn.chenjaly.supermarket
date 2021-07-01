@@ -11,12 +11,13 @@ import cn.chenjaly.supermarket.service.OrderService;
 import java.util.List;
 
 public class OrderServiceimpl implements OrderService {
-    OrdersDao dao=new OrdersDaoimpl();
-    OrderItemDao orderItemDao=new OrderItemDaoimpl();
+    OrdersDao dao = new OrdersDaoimpl();
+    OrderItemDao orderItemDao = new OrderItemDaoimpl();
+
     @Override
     public int addOrders(Order order) {
         int i = dao.addOrders(order);
-        for (OrderItem orderItem:order.getOrderItems()){
+        for (OrderItem orderItem : order.getOrderItems()) {
             orderItemDao.addOrderItem(orderItem);
         }
         return i;
@@ -24,14 +25,15 @@ public class OrderServiceimpl implements OrderService {
 
     @Override
     public List<Order> getOrdersByUid(String uid) {
-        List<Order> orderList=dao.getOrdersListByUid(uid);
-        for (Order order:orderList){
-            List<OrderItem> orderItemList=orderItemDao.getOrderItemByOid(order.getOid());
+        List<Order> orderList = dao.getOrdersListByUid(uid);
+        for (Order order : orderList) {
+            List<OrderItem> orderItemList = orderItemDao.getOrderItemByOid(order.getOid());
             order.setOrderItems(orderItemList);
         }
         return orderList;
     }
-    public int deleteOrdersByOid(String oid){
+
+    public int deleteOrdersByOid(String oid) {
         orderItemDao.deleteOrderItemByOid(oid);
         return dao.deleteOrdersByOid(oid);
     }
@@ -46,5 +48,10 @@ public class OrderServiceimpl implements OrderService {
     @Override
     public int updateOrders(Order order) {
         return dao.updateOrders(order);
+    }
+
+    @Override
+    public int updateOrdersState(String oid) {
+        return dao.updateOrdersState(oid);
     }
 }
