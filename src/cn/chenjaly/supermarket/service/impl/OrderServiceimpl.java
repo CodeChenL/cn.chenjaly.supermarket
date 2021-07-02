@@ -54,4 +54,9 @@ public class OrderServiceimpl implements OrderService {
     public int updateOrdersState(String oid) {
         return dao.updateOrdersState(oid);
     }
+
+    @Override
+    public int assessOrder(String oid, String assess) {
+        return dao.assessOrder(oid,assess);
+    }
 }

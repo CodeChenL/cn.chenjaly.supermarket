@@ -40,6 +40,12 @@ public class OrdersDaoimpl implements OrdersDao {
     }
 
     @Override
+    public Order getOrderAssessByOid(String oid) {
+        String sql="select assess from orders WHERE oid=?";
+        return jdbcTemplate.queryForObject(sql, new BeanPropertyRowMapper<>(Order.class), oid);
+    }
+
+    @Override
     public int updateOrders(Order order) {
         String sql = "update orders set address=?,name=?,telephone=? where oid=?";
         return jdbcTemplate.update(sql, order.getAddress(), order.getName(), order.getTelephone(), order.getOid());
@@ -49,5 +55,11 @@ public class OrdersDaoimpl implements OrdersDao {
     public int updateOrdersState(String oid) {
         String sql = "update orders set state=state+1 where oid=?";
         return jdbcTemplate.update(sql, oid);
+    }
+
+    @Override
+    public int assessOrder(String oid, String assess) {
+        String sql="update orders set assess=? where oid=?";
+        return jdbcTemplate.update(sql,assess,oid);
     }
 }

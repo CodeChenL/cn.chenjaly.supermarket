@@ -16,5 +16,6 @@ public interface OrderService {
     public int updateOrders(Order order);
 
     public int updateOrdersState(String oid);
+    public int assessOrder(String oid,String assess);
 }
 

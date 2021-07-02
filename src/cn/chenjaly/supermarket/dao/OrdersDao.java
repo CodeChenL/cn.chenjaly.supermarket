@@ -12,8 +12,10 @@ public interface OrdersDao {
     public int deleteOrdersByOid(String oid);
 
     public Order getOrderByOid(String oid);
+    public Order getOrderAssessByOid(String oid);
 
     public int updateOrders(Order order);
 
     public int updateOrdersState(String oid);
+    public int assessOrder(String oid,String assess);
 }

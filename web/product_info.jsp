@@ -108,9 +108,12 @@
                     <tr class="active">
                         <th><strong>商品评论</strong></th>
                     </tr>
-                    <tr class="warning">
-                        <th>暂无商品评论信息 <a>[发表商品评论]</a></th>
-                    </tr>
+                    ${assess}
+                    <%
+                        if (request.getAttribute("assess").equals("")){
+                            out.println("<tr class=\"warring\"><th>此商品暂无评论</th></tr>");
+                        }
+                    %>
                     </tbody>
                 </table>
             </div>

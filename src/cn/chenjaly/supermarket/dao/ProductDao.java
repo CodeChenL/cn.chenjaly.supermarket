@@ -15,4 +15,5 @@ public interface ProductDao {
 
     public List<Product> getProductListByCid(String cid);
     public List<Product> searchProduct(String search);
+    public String getOrderAssessByPid(String pid);
 }

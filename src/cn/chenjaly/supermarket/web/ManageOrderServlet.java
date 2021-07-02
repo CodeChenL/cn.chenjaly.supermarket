@@ -30,7 +30,6 @@ public class ManageOrderServlet extends HttpServlet {
             service.updateOrdersState(oid);
             resp.sendRedirect("OrderListServlet?currentPage=1");
         }else if (state==3){
-            service.updateOrdersState(oid);
             req.getRequestDispatcher("assess.jsp").forward(req,resp);
         }else {
             req.getRequestDispatcher("order.jsp").forward(req,resp);

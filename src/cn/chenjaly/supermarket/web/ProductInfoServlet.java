@@ -17,10 +17,12 @@ public class ProductInfoServlet extends HttpServlet {
         String pid = req.getParameter("pid");
         //调用
         ProductService service = new ProductServiceimpl();
-        Product productByPid = service.getProductByPid(pid);
+        Product product = service.getProductByPid(pid);
 
+
+        req.setAttribute("assess",service.getOrderAssessByPid(pid));
         //将查询出来的数据转发给前端
-        req.setAttribute("product", productByPid);
+        req.setAttribute("product", product);
 
 
         //跳转

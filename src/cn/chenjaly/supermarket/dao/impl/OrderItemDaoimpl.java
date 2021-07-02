@@ -1,8 +1,10 @@
 package cn.chenjaly.supermarket.dao.impl;
 
+import cn.chenjaly.supermarket.bean.Order;
 import cn.chenjaly.supermarket.bean.OrderItem;
 import cn.chenjaly.supermarket.bean.Product;
 import cn.chenjaly.supermarket.dao.OrderItemDao;
+import cn.chenjaly.supermarket.dao.OrdersDao;
 import cn.chenjaly.supermarket.dao.ProductDao;
 import cn.chenjaly.supermarket.util.JDBCUtils;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
@@ -41,4 +43,6 @@ public class OrderItemDaoimpl implements OrderItemDao {
         String sql = "delete from orderitem where oid=? ";
         return jdbcTemplate.update(sql, oid);
     }
+
+
 }

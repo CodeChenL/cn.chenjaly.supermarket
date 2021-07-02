@@ -39,4 +39,9 @@ public class ProductServiceimpl implements ProductService {
     public List<Product> searchProduct(String search) {
         return dao.searchProduct(search);
     }
+
+    @Override
+    public String getOrderAssessByPid(String pid) {
+        return dao.getOrderAssessByPid(pid);
+    }
 }
